@@ -30,7 +30,8 @@ public class Main {
             arr[i] = new Clothes(name, type, price);
         }
 
-        System.out.println("\n RESULT:");
+        System.out.println("--------------------");
+        System.out.println("\nRESULT:");
         for (Clothes c : arr) {
             System.out.println(c);
         }
