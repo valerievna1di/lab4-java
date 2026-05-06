@@ -6,36 +6,87 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter number of clothes: ");
-        int n = sc.nextInt();
-        sc.nextLine();
+        Clothes[] clothes = new Clothes[100];
+        int count = 0;
 
-        Clothes[] arr = new Clothes[n];
+        while (true) {
 
-        for (int i = 0; i < n; i++) {
-            System.out.println("Item " + (i + 1));
+            System.out.println("\n--- MENU ---");
+            System.out.println("1. Create new object");
+            System.out.println("2. Show all objects");
+            System.out.println("3. Exit");
+            System.out.print("Choose option: ");
 
-            System.out.print("Name: ");
-            String name = sc.nextLine();
+            String input = scanner.nextLine();
+            int choice;
 
-            System.out.print("Type: ");
-            String type = sc.nextLine();
+            // перевірка введення меню
+            try {
+                choice = Integer.parseInt(input);
+            } catch (Exception e) {
+                System.out.println("Invalid input! Enter a number");
+                continue;
+            }
 
-            System.out.print("Price: ");
-            double price = sc.nextDouble();
-            sc.nextLine();
+            // СТВОРЕННЯ ОБ’ЄКТА
+            if (choice == 1) {
 
-            arr[i] = new Clothes(name, type, price);
+                try {
+                    System.out.print("Name: ");
+                    String name = scanner.nextLine();
+
+                    System.out.print("Type: ");
+                    String type = scanner.nextLine();
+
+                    System.out.print("Price: ");
+                    double price = Double.parseDouble(scanner.nextLine());
+
+                    System.out.print("Size: ");
+                    String size = scanner.nextLine();
+
+                    Clothes c = new Clothes(name, type, price, size);
+                    clothes[count++] = c;
+
+                    System.out.println("Object created successfully!");
+
+                } catch (NumberFormatException e) {
+                    System.out.println("Error: Price must be a number!");
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Error: " + e.getMessage());
+                } catch (Exception e) {
+                    System.out.println("Unexpected error!");
+                }
+
+            }
+
+            // ВИВІД ОБ’ЄКТІВ
+            else if (choice == 2) {
+
+                if (count == 0) {
+                    System.out.println("No objects created yet");
+                } else {
+                    System.out.println("\n--- CLOTHES LIST ---");
+                    for (int i = 0; i < count; i++) {
+                        System.out.println(clothes[i]);
+                    }
+                }
+
+            }
+
+            // ВИХІД
+            else if (choice == 3) {
+                System.out.println("Program finished");
+                break;
+            }
+
+            // НЕПРАВИЛЬНИЙ ВИБІР
+            else {
+                System.out.println("Invalid option!");
+            }
         }
 
-        System.out.println("--------------------");
-        System.out.println("\nRESULT:");
-        for (Clothes c : arr) {
-            System.out.println(c);
-        }
-
-        sc.close();
+        scanner.close();
     }
 }
