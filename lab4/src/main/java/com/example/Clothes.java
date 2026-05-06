@@ -33,8 +33,6 @@ public class Clothes {
     public void setType(String type) { this.type = type; }
 
     public double getPrice() { return price; }
-    public void setPrice(double price) { this.price = price; }
-
     public void setPrice(double price) {
         if (price <= 0) {
             throw new IllegalArgumentException("Invalid price");
