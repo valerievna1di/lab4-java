@@ -5,6 +5,7 @@ public class Clothes {
     private String name;
     private String type;
     private double price;
+    private String size;
 
     public Clothes(String name, String type, double price) {
         this.name = name;
