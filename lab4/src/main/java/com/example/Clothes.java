@@ -3,7 +3,7 @@ package com.example;
 public class Clothes {
 
     private String name;
-    private String type;
+    private ClothesType type;
     private double price;
     private String size;
 

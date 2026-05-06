@@ -37,8 +37,8 @@ public class Main {
                     System.out.print("Name: ");
                     String name = scanner.nextLine();
 
-                    System.out.print("Type: ");
-                    String type = scanner.nextLine();
+                    System.out.print("Type (SUMMER/WINTER/AUTUMN/SPRING): ");
+                    ClothesType type = ClothesType.valueOf(scanner.nextLine().toUpperCase());
 
                     System.out.print("Price: ");
                     double price = Double.parseDouble(scanner.nextLine());
