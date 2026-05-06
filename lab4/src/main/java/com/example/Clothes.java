@@ -28,6 +28,13 @@ public class Clothes {
         
         count++;
     }
+    
+    public Clothes(Clothes other) {
+        this.name = other.name;
+        this.type = other.type;
+        this.price = other.price;
+        this.size = other.size;
+    }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }

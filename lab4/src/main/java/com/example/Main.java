@@ -50,6 +50,18 @@ public class Main {
                     clothes[count++] = c;
 
                     System.out.println("Object created successfully!");
+                    
+                    // copy constructor demo
+                    System.out.print("Create copy? (yes/no): ");
+                    String ans = scanner.nextLine();
+
+                    if (ans.equalsIgnoreCase("yes")) {
+                        Clothes copy = new Clothes(c);
+
+                        System.out.println("Original: " + c);
+                        System.out.println("Copy: " + copy);
+                        System.out.println("Are they same object? " + (c == copy));
+                    }
 
                 } catch (NumberFormatException e) {
                     System.out.println("Error: Price must be a number!");
