@@ -1,15 +1,16 @@
 package com.example;
 
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-
-        Clothes[] clothes = new Clothes[100];
-        int count = 0;
+        
+        List<Clothes> list = new ArrayList<>();
 
         while (true) {
 
@@ -47,7 +48,7 @@ public class Main {
                     String size = scanner.nextLine();
 
                     Clothes c = new Clothes(name, type, price, size);
-                    clothes[count++] = c;
+                    list.add(c);
 
                     System.out.println("Object created successfully!");
                     
@@ -76,13 +77,16 @@ public class Main {
             // ВИВІД ОБ’ЄКТІВ
             else if (choice == 2) {
 
-                if (count == 0) {
+                if (list.isEmpty()) {
                     System.out.println("No objects created yet");
                 } else {
                     System.out.println("\n--- CLOTHES LIST ---");
-                    for (int i = 0; i < count; i++) {
-                        System.out.println(clothes[i]);
+                    for (Clothes c : list) {
+                        System.out.println(c);
                     }
+                    
+                    Wardrobe wardrobe = new Wardrobe(list);
+                    wardrobe.showAll();
              
                 }
 

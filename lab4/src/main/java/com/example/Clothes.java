@@ -8,7 +8,7 @@ public class Clothes {
     private String size;
     private static int count = 0;
 
-    public Clothes(String name, String type, double price, String size) {
+    public Clothes(String name, ClothesType type, double price, String size) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Name cannot be empty");
         }
@@ -39,8 +39,8 @@ public class Clothes {
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
-    public String getType() { return type; }
-    public void setType(String type) { this.type = type; }
+    public ClothesType getType() { return type; }
+    public void setType(ClothesType type) { this.type = type; }
 
     public double getPrice() { return price; }
     public void setPrice(double price) {
