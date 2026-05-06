@@ -7,10 +7,23 @@ public class Clothes {
     private double price;
     private String size;
 
-    public Clothes(String name, String type, double price) {
+    public Clothes(String name, String type, double price, String size) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be empty");
+        }
+
+        if (price <= 0) {
+            throw new IllegalArgumentException("Price must be positive");
+        }
+
+        if (size == null || size.isEmpty()) {
+            throw new IllegalArgumentException("Size cannot be empty");
+        }
+
         this.name = name;
         this.type = type;
         this.price = price;
+        this.size = size;
     }
 
     public String getName() { return name; }
@@ -21,6 +34,13 @@ public class Clothes {
 
     public double getPrice() { return price; }
     public void setPrice(double price) { this.price = price; }
+
+    public void setPrice(double price) {
+        if (price <= 0) {
+            throw new IllegalArgumentException("Invalid price");
+        }
+        this.price = price;
+    }
 
     @Override
     public String toString() {
