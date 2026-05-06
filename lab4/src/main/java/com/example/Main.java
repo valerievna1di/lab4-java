@@ -71,7 +71,10 @@ public class Main {
                     for (int i = 0; i < count; i++) {
                         System.out.println(clothes[i]);
                     }
+             
                 }
+
+                System.out.println("Total clothes created: " + Clothes.getCount());
 
             }
 
