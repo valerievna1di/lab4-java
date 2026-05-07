@@ -29,6 +29,7 @@ public class Main {
                 continue;
             }
 
+            // СТВОРЕННЯ ОБ'ЄКТУ
             if (choice == 1) {
 
                 System.out.println("\nChoose object type:");
@@ -149,14 +150,14 @@ public class Main {
                 }
             }
 
-            // SHOW ALL OBJECTS
+            // ПОКАЗАТИ ВСІ ОБ'ЄКТИ
             else if (choice == 2) {
 
                 if (list.isEmpty()) {
                     System.out.println("No objects created yet");
                 } else {
                     System.out.println("Objects count: " + list.size());
-                    System.out.println("\n--- OBJECTS ---");
+                    System.out.println("\n--- ALL OBJECTS ---");
 
                     for (Clothes c : list) {
                         System.out.println(c); // поліморфізм
