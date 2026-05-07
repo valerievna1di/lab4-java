@@ -167,7 +167,10 @@ public class Main {
 
             // ВИХІД
             else if (choice == 3) {
-                System.out.println("Program finished");
+
+                FileService.saveToFile(list, "input.txt");
+
+                System.out.println("Data saved to file. Program finished");
                 break;
             }
 
