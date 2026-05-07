@@ -43,7 +43,7 @@ public class Clothes {
     public double getPrice() { return price; }
     public void setPrice(double price) {
         if (price <= 0) {
-            throw new IllegalArgumentException("Invalid price");
+            throw new IllegalArgumentException("Invalid price! Price must be positive");
         }
         this.price = price;
     }

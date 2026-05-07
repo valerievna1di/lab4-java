@@ -124,7 +124,7 @@ public class Main {
                     System.out.println("\n--- CLOTHES LIST ---");
 
                     for (Clothes c : list) {
-                        System.out.println(c); // POLYMORPHISM HERE
+                        System.out.println(c); // поліморфізм
                     }
                 }
             }
