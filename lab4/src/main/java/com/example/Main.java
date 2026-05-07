@@ -155,6 +155,7 @@ public class Main {
                 if (list.isEmpty()) {
                     System.out.println("No objects created yet");
                 } else {
+                    System.out.println("Objects count: " + list.size());
                     System.out.println("\n--- OBJECTS ---");
 
                     for (Clothes c : list) {
