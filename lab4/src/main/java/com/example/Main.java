@@ -167,39 +167,68 @@ public class Main {
             }
 
             // МЕНЮ ПОШУКУ
-            if (choice == 3) {
+            else if (choice == 3) {
 
                 System.out.println("\n--- SEARCH MENU ---");
                 System.out.println("1. By name");
                 System.out.println("2. By type");
                 System.out.println("3. By price range");
                 System.out.println("0. Back");
-                
-                if (searchChoice == 1) {
-                    System.out.print("Enter name: ");
-                    String name = scanner.nextLine();
-                    searchByName(list, name);
-                }
-                
-                else if (searchChoice == 2) {
-                    System.out.print("Enter type: ");
-                    ClothesType type =
-                            ClothesType.valueOf(scanner.nextLine().toUpperCase());
 
-                    searchByType(list, type);
+                int searchChoice;
+
+                try {
+                    searchChoice = Integer.parseInt(scanner.nextLine());
+                } catch (Exception e) {
+                    System.out.println("Invalid input!");
+                    continue;
                 }
 
-                else if (searchChoice == 3) {
+                if (searchChoice == 0) {
+                    continue;
+                }
 
-                    System.out.print("Min price: ");
-                    double min = Double.parseDouble(scanner.nextLine());
+                try {
 
-                    System.out.print("Max price: ");
-                    double max = Double.parseDouble(scanner.nextLine());
+                    if (searchChoice == 1) {
 
-                    searchByPrice(list, min, max);
-                }                
-                    
+                        System.out.print("Enter name: ");
+                        String name = scanner.nextLine();
+
+                        searchByName(list, name);
+                    }
+
+                    else if (searchChoice == 2) {
+
+                        System.out.print("Enter type (SUMMER/WINTER/AUTUMN/SPRING): ");
+                        ClothesType type =
+                                ClothesType.valueOf(scanner.nextLine().toUpperCase());
+
+                        searchByType(list, type);
+                    }
+
+                    else if (searchChoice == 3) {
+
+                        System.out.print("Min price: ");
+                        double min = Double.parseDouble(scanner.nextLine());
+
+                        System.out.print("Max price: ");
+                        double max = Double.parseDouble(scanner.nextLine());
+
+                        searchByPrice(list, min, max);
+                    }
+
+                    else {
+                        System.out.println("Invalid option!");
+                    }
+
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Error: " + e.getMessage());
+                }
+
+                catch (Exception e) {
+                    System.out.println("Unexpected error!");
+                }
             }            
             
             // ВИХІД
