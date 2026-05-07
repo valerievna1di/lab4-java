@@ -15,4 +15,18 @@ public class Store {
     public int getQuantity(Clothes c) {
         return quantities.get(clothesList.indexOf(c));
     }
+    
+    public void addNewClothes(Clothes cl, int quantity) {
+
+        for (int i = 0; i < clothesList.size(); i++) {
+
+            if (clothesList.get(i).equals(cl)) {
+                quantities.set(i, quantities.get(i) + quantity);
+                return;
+            }
+        }
+
+        clothesList.add(cl);
+        quantities.add(quantity);
+    }    
 }
