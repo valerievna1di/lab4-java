@@ -161,14 +161,14 @@ public class Main {
             // ПОКАЗАТИ ВСІ ОБ'ЄКТИ
             else if (choice == 2) {
 
-                if (list.isEmpty()) {
+                if (store.getAll().isEmpty()) {
                     System.out.println("No objects created yet");
                 } else {
-                    System.out.println("Objects count: " + list.size());
+                    System.out.println("Objects count: " + store.getAll().size());
                     System.out.println("\n--- ALL OBJECTS ---");
 
-                    for (Clothes c : list) {
-                        System.out.println(c); // поліморфізм
+                    for (Clothes c : store.getAll()) {
+                        System.out.println(c + " | qty: " + store.getQuantity(c));
                     }
                 }
             }
