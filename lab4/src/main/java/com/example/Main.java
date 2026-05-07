@@ -241,7 +241,7 @@ public class Main {
             // ВИХІД
             else if (choice == 4) {
 
-                FileService.saveToFile(list, "input.txt");
+                FileService.saveToFile(store.getAll(), "input.txt");
 
                 System.out.println("Data saved to file. Program finished");
                 break;
