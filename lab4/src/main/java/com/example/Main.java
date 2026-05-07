@@ -82,7 +82,7 @@ public class Main {
                         Clothes c =
                                 new Clothes(name, type, price, size);
 
-                        list.add(c);
+                        store.addNewClothes(c, 1);
 
                         System.out.println("Clothes created!");
                     }
@@ -96,7 +96,7 @@ public class Main {
                                 new Pants(name, type,
                                         price, size, material);
 
-                        list.add(pants);
+                        store.addNewClothes(pants, 1);
 
                         System.out.println("Pants created!");
                     }
@@ -111,7 +111,7 @@ public class Main {
                                 new Shirts(name, type,
                                         price, size, longSleeve);
 
-                        list.add(shirt);
+                        store.addNewClothes(shirt, 1);
 
                         System.out.println("Shirt created!");
                     }
@@ -126,7 +126,7 @@ public class Main {
                                 new Jacket(name, type,
                                         price, size, hood);
 
-                        list.add(jacket);
+                        store.addNewClothes(jacket, 1);
 
                         System.out.println("Jacket created!");
                     }
@@ -140,7 +140,7 @@ public class Main {
                                 new Shoes(name, type,
                                         price, size, soleType);
 
-                        list.add(shoes);
+                        store.addNewClothes(shoes, 1);
 
                         System.out.println("Shoes created!");
                     }
