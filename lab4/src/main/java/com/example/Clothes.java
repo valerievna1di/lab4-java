@@ -50,7 +50,7 @@ public class Clothes {
 
     @Override
     public String toString() {
-        return name + " | " + type + " | " + price;
+        return name + " | " + type + " | " + price + " | " + size;
     }
 
     @Override
