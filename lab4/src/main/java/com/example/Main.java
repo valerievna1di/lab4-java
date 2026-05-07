@@ -2,36 +2,36 @@ package com.example;
 
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        
+
         ArrayList<Clothes> list = new ArrayList<>();
 
         while (true) {
 
             System.out.println("\n--- MENU ---");
-            System.out.println("1. Create new object");
-            System.out.println("2. Show all objects");
-            System.out.println("3. Exit");
+            System.out.println("1. Create Clothes");
+            System.out.println("2. Create Pants");
+            System.out.println("3. Create Shirts");
+            System.out.println("4. Show all objects");
+            System.out.println("5. Exit");
             System.out.print("Choose option: ");
 
-            String input = scanner.nextLine();
             int choice;
 
             // перевірка введення меню
             try {
-                choice = Integer.parseInt(input);
+                choice = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
                 System.out.println("Invalid input! Enter a number");
                 continue;
             }
 
-            // СТВОРЕННЯ ОБ’ЄКТА
+            // CLOTHES
             if (choice == 1) {
 
                 try {
@@ -50,47 +50,87 @@ public class Main {
                     Clothes c = new Clothes(name, type, price, size);
                     list.add(c);
 
-                    System.out.println("Object created successfully!");
-                    
-                    // copy constructor demo
-                    System.out.print("Create copy? (yes/no): ");
-                    String ans = scanner.nextLine();
+                    System.out.println("Clothes created!");
 
-                    if (ans.equalsIgnoreCase("yes")) {
-                        Clothes copy = new Clothes(c);
-
-                        System.out.println("Original: " + c);
-                        System.out.println("Copy: " + copy);
-                        System.out.println("Are they same object? " + (c == copy));
-                    }
-
-                } catch (NumberFormatException e) {
-                    System.out.println("Error: Price must be a number!");
-                } catch (IllegalArgumentException e) {
-                    System.out.println("Error: " + e.getMessage());
                 } catch (Exception e) {
-                    System.out.println("Unexpected error!");
+                    System.out.println("Error: " + e.getMessage());
                 }
-
             }
 
-            // ВИВІД ОБ’ЄКТІВ
+            // PANTS
             else if (choice == 2) {
 
+                try {
+                    System.out.print("Name: ");
+                    String name = scanner.nextLine();
+
+                    System.out.print("Type (SUMMER/WINTER/AUTUMN/SPRING): ");
+                    ClothesType type = ClothesType.valueOf(scanner.nextLine().toUpperCase());
+
+                    System.out.print("Price: ");
+                    double price = Double.parseDouble(scanner.nextLine());
+
+                    System.out.print("Size: ");
+                    String size = scanner.nextLine();
+
+                    System.out.print("Material: ");
+                    String material = scanner.nextLine();
+
+                    Clothes p = new Pants(name, type, price, size, material);
+                    list.add(p);
+
+                    System.out.println("Pants created!");
+
+                } catch (Exception e) {
+                    System.out.println("Error: " + e.getMessage());
+                }
+            }
+
+            // SHIRTS
+            else if (choice == 3) {
+
+                try {
+                    System.out.print("Name: ");
+                    String name = scanner.nextLine();
+
+                    System.out.print("Type (SUMMER/WINTER/AUTUMN/SPRING): ");
+                    ClothesType type = ClothesType.valueOf(scanner.nextLine().toUpperCase());
+
+                    System.out.print("Price: ");
+                    double price = Double.parseDouble(scanner.nextLine());
+
+                    System.out.print("Size: ");
+                    String size = scanner.nextLine();
+
+                    System.out.print("Long sleeve (true/false): ");
+                    boolean longSleeve = Boolean.parseBoolean(scanner.nextLine());
+
+                    Clothes s = new Shirts(name, type, price, size, longSleeve);
+                    list.add(s);
+
+                    System.out.println("Shirt created!");
+
+                } catch (Exception e) {
+                    System.out.println("Error: " + e.getMessage());
+                }
+            }
+
+            // ВИВІД ОБ’ЄКТІВ (POLYMORPHISM)
+            else if (choice == 4) {
+
                 if (list.isEmpty()) {
-                    System.out.println("No objects created yet");
+                    System.out.println("No objects yet");
                 } else {
                     System.out.println("\n--- CLOTHES LIST ---");
-                    for (Clothes c : list) {
-                        System.out.println(c);
-                    }
-             
-                }
 
+                    for (Clothes c : list) {
+                        System.out.println(c); // POLYMORPHISM HERE
+                    }
+                }
             }
 
             // ВИХІД
-            else if (choice == 3) {
+            else if (choice == 5) {
                 System.out.println("Program finished");
                 break;
             }
