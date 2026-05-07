@@ -9,7 +9,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        ArrayList<Clothes> list = new ArrayList<>();
+        ArrayList<Clothes> list = FileService.loadFromFile("input.txt");
 
         while (true) {
 
