@@ -10,7 +10,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         
-        List<Clothes> list = new ArrayList<>();
+        ArrayList<Clothes> list = new ArrayList<>();
 
         while (true) {
 
@@ -84,13 +84,8 @@ public class Main {
                     for (Clothes c : list) {
                         System.out.println(c);
                     }
-                    
-                    Wardrobe wardrobe = new Wardrobe(list);
-                    wardrobe.showAll();
              
                 }
-
-                System.out.println("Total clothes created: " + Clothes.getCount());
 
             }
 

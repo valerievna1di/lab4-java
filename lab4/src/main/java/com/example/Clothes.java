@@ -6,7 +6,6 @@ public class Clothes {
     private ClothesType type;
     private double price;
     private String size;
-    private static int count = 0;
 
     public Clothes(String name, ClothesType type, double price, String size) {
         if (name == null || name.isEmpty()) {
@@ -25,8 +24,7 @@ public class Clothes {
         this.type = type;
         this.price = price;
         this.size = size;
-        
-        count++;
+
     }
     
     public Clothes(Clothes other) {
@@ -48,10 +46,6 @@ public class Clothes {
             throw new IllegalArgumentException("Invalid price");
         }
         this.price = price;
-    }
-
-    public static int getCount() {
-        return count;
     }
 
     @Override
