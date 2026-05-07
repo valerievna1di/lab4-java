@@ -9,6 +9,13 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
+        if (args.length == 0) {
+            System.out.println("Config file not found");
+            return;
+        }
+
+        DatabaseManager db = new DatabaseManager(args[0]);        
+
         Store store = new Store();
 
         ArrayList<Clothes> temp =
@@ -84,6 +91,8 @@ public class Main {
 
                         store.addNewClothes(c, 1);
 
+                        db.saveClothes(c);
+
                         System.out.println("Clothes created!");
                     }
 
@@ -97,6 +106,8 @@ public class Main {
                                         price, size, material);
 
                         store.addNewClothes(pants, 1);
+
+                        db.saveClothes(pants);
 
                         System.out.println("Pants created!");
                     }
@@ -113,6 +124,8 @@ public class Main {
 
                         store.addNewClothes(shirt, 1);
 
+                        db.saveClothes(shirt);
+
                         System.out.println("Shirt created!");
                     }
 
@@ -128,6 +141,8 @@ public class Main {
 
                         store.addNewClothes(jacket, 1);
 
+                        db.saveClothes(jacket);
+
                         System.out.println("Jacket created!");
                     }
 
@@ -141,6 +156,8 @@ public class Main {
                                         price, size, soleType);
 
                         store.addNewClothes(shoes, 1);
+
+                        db.saveClothes(shoes);
 
                         System.out.println("Shoes created!");
                     }
