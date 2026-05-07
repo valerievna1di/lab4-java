@@ -8,6 +8,10 @@ public class Pants extends Clothes {
         super(name, type, price, size);
         this.material = material;
     }
+    
+    public String getMaterial() {
+        return material;
+    }
 
     @Override
     public String toString() {

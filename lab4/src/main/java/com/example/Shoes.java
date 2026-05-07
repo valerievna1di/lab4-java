@@ -9,6 +9,10 @@ public class Shoes extends Clothes {
         this.soleType = soleType;
     }
 
+    public String getSoleType() {
+        return soleType;
+    }
+
     @Override
     public String toString() {
         return "SHOES: " + super.toString() + " | soleType=" + soleType;

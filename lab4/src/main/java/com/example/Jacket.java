@@ -9,6 +9,10 @@ public class Jacket extends Clothes {
         this.hood = hood;
     }
 
+    public boolean isHood() {
+        return hood;
+    }
+
     @Override
     public String toString() {
         return "JACKET: " + super.toString() + " | hood=" + hood;

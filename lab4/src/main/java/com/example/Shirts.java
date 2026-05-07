@@ -9,6 +9,10 @@ public class Shirts extends Clothes {
         this.longSleeve = longSleeve;
     }
 
+    public boolean isLongSleeve() {
+        return longSleeve;
+    }
+
     @Override
     public String toString() {
         return "SHIRT: " + super.toString() + " | longSleeve=" + longSleeve;

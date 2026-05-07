@@ -47,6 +47,9 @@ public class Clothes {
         }
         this.price = price;
     }
+    
+    public String getSize() { return size; }
+    public void setSize(String size) { this.size = size; }
 
     @Override
     public String toString() {

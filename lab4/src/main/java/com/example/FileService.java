@@ -16,6 +16,9 @@ public class FileService {
             while (sc.hasNextLine()) {
 
                 String[] parts = sc.nextLine().split(";");
+                
+                if (parts.length < 5) continue;
+                
                 String type = parts[0];
 
                 switch (type) {
@@ -28,6 +31,8 @@ public class FileService {
                         break;
 
                     case "PANTS":
+                        if (parts.length < 6) continue;
+                    
                         list.add(new Pants(parts[1],
                                 ClothesType.valueOf(parts[2]),
                                 Double.parseDouble(parts[3]),
@@ -36,6 +41,8 @@ public class FileService {
                         break;
 
                     case "SHIRTS":
+                        if (parts.length < 6) continue;
+                    
                         list.add(new Shirts(parts[1],
                                 ClothesType.valueOf(parts[2]),
                                 Double.parseDouble(parts[3]),
@@ -44,6 +51,8 @@ public class FileService {
                         break;
 
                     case "JACKET":
+                        if (parts.length < 6) continue;
+                    
                         list.add(new Jacket(parts[1],
                                 ClothesType.valueOf(parts[2]),
                                 Double.parseDouble(parts[3]),
@@ -52,6 +61,8 @@ public class FileService {
                         break;
 
                     case "SHOES":
+                        if (parts.length < 6) continue;
+                    
                         list.add(new Shoes(parts[1],
                                 ClothesType.valueOf(parts[2]),
                                 Double.parseDouble(parts[3]),
