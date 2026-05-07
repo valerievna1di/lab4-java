@@ -2,10 +2,10 @@ package com.example;
 
 public class Clothes {
 
-    private String name;
-    private ClothesType type;
-    private double price;
-    private String size;
+    protected String name;
+    protected ClothesType type;
+    protected double price;
+    protected String size;
 
     public Clothes(String name, ClothesType type, double price, String size) {
         if (name == null || name.isEmpty()) {
