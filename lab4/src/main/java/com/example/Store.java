@@ -28,5 +28,47 @@ public class Store {
 
         clothesList.add(cl);
         quantities.add(quantity);
-    }    
-}
+    }
+
+    public void searchByName(String name) {
+
+        boolean found = false;
+
+        for (Clothes c : clothesList) {
+            if (c.getName().equalsIgnoreCase(name)) {
+                System.out.println(c + " | qty: " + getQuantity(c));
+                found = true;
+            }
+        }
+
+        if (!found) System.out.println("Nothing found");
+    }
+
+    public void searchByType(ClothesType type) {
+
+        boolean found = false;
+
+        for (Clothes c : clothesList) {
+            if (c.getType() == type) {
+                System.out.println(c + " | qty: " + getQuantity(c));
+                found = true;
+            }
+        }
+
+        if (!found) System.out.println("Nothing found");
+    }
+
+    public void searchByPrice(double min, double max) {
+
+        boolean found = false;
+
+        for (Clothes c : clothesList) {
+            if (c.getPrice() >= min && c.getPrice() <= max) {
+                System.out.println(c + " | qty: " + getQuantity(c));
+                found = true;
+            }
+        }
+
+        if (!found) System.out.println("Nothing found");
+    }
+}    
