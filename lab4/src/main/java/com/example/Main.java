@@ -187,7 +187,18 @@ public class Main {
                             ClothesType.valueOf(scanner.nextLine().toUpperCase());
 
                     searchByType(list, type);
-                }                    
+                }
+
+                else if (searchChoice == 3) {
+
+                    System.out.print("Min price: ");
+                    double min = Double.parseDouble(scanner.nextLine());
+
+                    System.out.print("Max price: ");
+                    double max = Double.parseDouble(scanner.nextLine());
+
+                    searchByPrice(list, min, max);
+                }                
                     
             }            
             
@@ -231,6 +242,22 @@ public class Main {
 
         for (Clothes c : list) {
             if (c.getType() == type) {
+                System.out.println(c);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Nothing found");
+        }
+    }
+    
+    static void searchByPrice(ArrayList<Clothes> list, double min, double max) {
+
+        boolean found = false;
+
+        for (Clothes c : list) {
+            if (c.getPrice() >= min && c.getPrice() <= max) {
                 System.out.println(c);
                 found = true;
             }
