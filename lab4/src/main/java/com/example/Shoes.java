@@ -4,19 +4,13 @@ public class Shoes extends Clothes {
 
     private String soleType;
 
-    public Shoes(String name, ClothesType type,
-                 double price, String size,
-                 String soleType) {
-
+    public Shoes(String name, ClothesType type, double price, String size, String soleType) {
         super(name, type, price, size);
-
         this.soleType = soleType;
     }
 
     @Override
     public String toString() {
-        return "SHOES: "
-                + super.toString()
-                + " | soleType=" + soleType;
+        return "SHOES: " + super.toString() + " | soleType=" + soleType;
     }
 }
