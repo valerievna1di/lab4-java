@@ -202,7 +202,7 @@ public class Main {
                         System.out.print("Enter name: ");
                         String name = scanner.nextLine();
 
-                        searchByName(list, name);
+                        store.searchByName(name);
                     }
 
                     else if (searchChoice == 2) {
@@ -211,7 +211,7 @@ public class Main {
                         ClothesType type =
                                 ClothesType.valueOf(scanner.nextLine().toUpperCase());
 
-                        searchByType(list, type);
+                        store.searchByType(type);
                     }
 
                     else if (searchChoice == 3) {
@@ -222,7 +222,7 @@ public class Main {
                         System.out.print("Max price: ");
                         double max = Double.parseDouble(scanner.nextLine());
 
-                        searchByPrice(list, min, max);
+                        store.searchByPrice(min, max);
                     }
 
                     else {
@@ -254,54 +254,6 @@ public class Main {
         }
 
         scanner.close();
-    }
-    
-    static void searchByName(ArrayList<Clothes> list, String name) {
-
-        boolean found = false;
-
-        for (Clothes c : list) {
-            if (c.getName().equalsIgnoreCase(name)) {
-                System.out.println(c);
-                found = true;
-            }
-        }
-
-        if (!found) {
-            System.out.println("Nothing found");
-        }
-    }
-    
-    static void searchByType(ArrayList<Clothes> list, ClothesType type) {
-
-        boolean found = false;
-
-        for (Clothes c : list) {
-            if (c.getType() == type) {
-                System.out.println(c);
-                found = true;
-            }
-        }
-
-        if (!found) {
-            System.out.println("Nothing found");
-        }
-    }
-    
-    static void searchByPrice(ArrayList<Clothes> list, double min, double max) {
-
-        boolean found = false;
-
-        for (Clothes c : list) {
-            if (c.getPrice() >= min && c.getPrice() <= max) {
-                System.out.println(c);
-                found = true;
-            }
-        }
-
-        if (!found) {
-            System.out.println("Nothing found");
-        }
     }
     
 }
