@@ -174,6 +174,12 @@ public class Main {
                 System.out.println("2. By type");
                 System.out.println("3. By price range");
                 System.out.println("0. Back");
+                
+                if (searchChoice == 1) {
+                    System.out.print("Enter name: ");
+                    String name = scanner.nextLine();
+                    searchByName(list, name);
+                }
             }            
             
             // ВИХІД
@@ -193,4 +199,21 @@ public class Main {
 
         scanner.close();
     }
+    
+    static void searchByName(ArrayList<Clothes> list, String name) {
+
+        boolean found = false;
+
+        for (Clothes c : list) {
+            if (c.getName().equalsIgnoreCase(name)) {
+                System.out.println(c);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Nothing found");
+        }
+    }
+    
 }
