@@ -16,7 +16,8 @@ public class Main {
             System.out.println("\n--- MENU ---");
             System.out.println("1. Create new object");
             System.out.println("2. Show all objects");
-            System.out.println("3. Exit");
+            System.out.println("3. Search objects");
+            System.out.println("4. Exit");
             System.out.print("Choose option: ");
 
             int choice;
@@ -165,8 +166,18 @@ public class Main {
                 }
             }
 
+            // МЕНЮ ПОШУКУ
+            if (choice == 3) {
+
+                System.out.println("\n--- SEARCH MENU ---");
+                System.out.println("1. By name");
+                System.out.println("2. By type");
+                System.out.println("3. By price range");
+                System.out.println("0. Back");
+            }            
+            
             // ВИХІД
-            else if (choice == 3) {
+            else if (choice == 4) {
 
                 FileService.saveToFile(list, "input.txt");
 

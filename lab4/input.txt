@@ -1,0 +1,6 @@
+CLOTHES;T-shirt;SUMMER;300.0;S
+PANTS;Joggers;WINTER;1400.0;M;fleece
+SHOES;Sneakers;SUMMER;1600.0;38;rubber
+SHIRTS;Polo shirt;SPRING;900.0;S;false
+JACKET;Light jacket;AUTUMN;1800.0;M;false
+PANTS;Jeans;SUMMER;1600.0;S;denim
