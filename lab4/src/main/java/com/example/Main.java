@@ -288,6 +288,20 @@ public class Main {
                         });
                     }
                     
+                    else if (sortChoice == 3) {
+
+                        Collections.sort(sortedList,
+                                new java.util.Comparator<Clothes>() {
+
+                            @Override
+                            public int compare(Clothes o1, Clothes o2) {
+
+                                return o1.getSize().
+                                        compareToIgnoreCase(o2.getSize());
+                            }
+                        });
+                    }                    
+                    
             }            
             
             // ВИХІД
