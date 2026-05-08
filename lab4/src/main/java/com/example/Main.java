@@ -263,8 +263,7 @@ public class Main {
                     
                     if (sortChoice == 1) {
 
-                        Collections.sort(sortedList,
-                                new java.util.Comparator<Clothes>() {
+                        Collections.sort(sortedList, new java.util.Comparator<Clothes>() {
 
                             @Override
                             public int compare(Clothes o1, Clothes o2) {
@@ -277,8 +276,7 @@ public class Main {
 
                     else if (sortChoice == 2) {
 
-                        Collections.sort(sortedList,
-                                new java.util.Comparator<Clothes>() {
+                        Collections.sort(sortedList, new java.util.Comparator<Clothes>() {
 
                             @Override
                             public int compare(Clothes o1, Clothes o2) {
@@ -290,8 +288,7 @@ public class Main {
                     
                     else if (sortChoice == 3) {
 
-                        Collections.sort(sortedList,
-                                new java.util.Comparator<Clothes>() {
+                        Collections.sort(sortedList, new java.util.Comparator<Clothes>() {
 
                             @Override
                             public int compare(Clothes o1, Clothes o2) {
@@ -300,8 +297,19 @@ public class Main {
                                         compareToIgnoreCase(o2.getSize());
                             }
                         });
+                    }
+
+                    else {
+                        System.out.println("Invalid option!");
+                        continue;
+                    }
+
+                    System.out.println("\n--- SORTED OBJECTS ---");
+
+                    for (Clothes c : sortedList) {
+                        System.out.println(c);
                     }                    
-                    
+                }    
             }            
             
             // ВИХІД
