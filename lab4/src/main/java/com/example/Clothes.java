@@ -1,11 +1,14 @@
 package com.example;
 
-public abstract class Clothes implements Comparable<Clothes> {
+import java.util.UUID;
+
+public abstract class Clothes implements Comparable<Clothes>, Identifiable {
 
     protected String name;
     protected ClothesType type;
     protected double price;
     protected String size;
+    private UUID uuid;
 
     public Clothes(String name, ClothesType type, double price, String size) {
         if (name == null || name.isEmpty()) {
@@ -24,6 +27,7 @@ public abstract class Clothes implements Comparable<Clothes> {
         this.type = type;
         this.price = price;
         this.size = size;
+        this.uuid = UUID.randomUUID();
 
     }
     
@@ -53,7 +57,7 @@ public abstract class Clothes implements Comparable<Clothes> {
 
     @Override
     public String toString() {
-        return name + " | " + type + " | " + price + " | " + size;
+        return name + " | " + type + " | " + price + " | " + size + " | UUID= " + uuid;
     }
 
     @Override
@@ -72,4 +76,9 @@ public abstract class Clothes implements Comparable<Clothes> {
     public int compareTo(Clothes other) {
         return this.name.compareToIgnoreCase(other.name);
     }
+    
+    @Override
+    public UUID getUuid() {
+        return uuid;
+    }    
 }
