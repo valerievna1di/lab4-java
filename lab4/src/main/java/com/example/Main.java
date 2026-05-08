@@ -2,6 +2,7 @@ package com.example;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Main {
 
@@ -24,7 +25,8 @@ public class Main {
             System.out.println("1. Create new object");
             System.out.println("2. Show all objects");
             System.out.println("3. Search objects");
-            System.out.println("4. Exit");
+            System.out.println("4. Show sorted objects");
+            System.out.println("5. Exit");
             System.out.print("Choose option: ");
 
             int choice;
@@ -238,8 +240,30 @@ public class Main {
                 }
             }            
             
-            // ВИХІД
+            // СОРТУВАННЯ
             else if (choice == 4) {
+
+                if (store.getAll().isEmpty()) {
+                    System.out.println("No objects to sort");
+                }
+
+                else {
+
+                    ArrayList<Clothes> sortedList =
+                            new ArrayList<>(store.getAll());
+
+                    Collections.sort(sortedList);
+
+                    System.out.println("\n--- SORTED OBJECTS ---");
+
+                    for (Clothes c : sortedList) {
+                        System.out.println(c);
+                    }
+                }
+            }            
+            
+            // ВИХІД
+            else if (choice == 5) {
 
                 FileService.saveToFile(store.getAll(), "input.txt");
 
