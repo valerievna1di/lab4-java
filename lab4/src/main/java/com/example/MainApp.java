@@ -23,6 +23,7 @@ public class MainApp extends Application {
     private TextField soleTypeField = new TextField();
 
     private TextField uuidField = new TextField();
+    private Clothes selectedClothes = null;
 
     @Override
     public void start(Stage stage) {
@@ -98,49 +99,98 @@ public class MainApp extends Application {
             output.appendText("Added: " + c + "\n");
         });
 
-        // ПОШУК
-        searchBtn.setOnAction(e -> {
-            Clothes result = store.searchByUuid(uuidField.getText());
-
-            if (result != null) {
-                output.appendText("Found: " + result + "\n");
-            } else {
-                output.appendText("Not found\n");
-            }
-        });
-        
         // ОНОВЛЕННЯ
         updateBtn.setOnAction(e -> {
 
-            Clothes existing = store.searchByUuid(uuidField.getText());
-
-            if (existing == null) {
-                output.appendText("Object not found for update\n");
+            if (selectedClothes == null) {
+                output.appendText("Search object first!\n");
                 return;
             }
 
-            // створюємо новий об'єкт з новими даними
-            Clothes updated = existing; // (або новий об'єкт якщо треба змінювати поля)
+            try {
+                String name = nameField.getText();
+                String size = sizeField.getText();
+                double price = Double.parseDouble(priceField.getText());
+                ClothesType type = ClothesType.valueOf(typeBox.getValue());
 
-            store.update(existing, updated);
+                Clothes updated;
 
-            output.appendText("Updated successfully\n");
+                switch (categoryBox.getValue()) {
+
+                    case "PANTS" -> updated =
+                            new Pants(name, type, price, size, materialField.getText());
+
+                    case "SHIRTS" -> updated =
+                            new Shirts(name, type, price, size, Boolean.parseBoolean(longSleeveField.getText()));
+
+                    case "JACKET" -> updated =
+                            new Jacket(name, type, price, size, Boolean.parseBoolean(hoodField.getText()));
+
+                    case "SHOES" -> updated =
+                            new Shoes(name, type, price, size, soleTypeField.getText());
+
+                    default -> {
+                        output.appendText("Unknown category!\n");
+                        return;
+                    }
+                }
+
+                boolean result = store.update(selectedClothes, updated);
+
+                if (result) {
+                    selectedClothes = updated;
+                    output.appendText("Updated successfully!\n");
+                } else {
+                    output.appendText("Update failed!\n");
+                }
+
+            } catch (Exception ex) {
+                output.appendText("Update error!\n");
+            }
         });
 
         // ВИДАЛЕННЯ
         deleteBtn.setOnAction(e -> {
 
-            Clothes existing = store.searchByUuid(uuidField.getText());
-
-            if (existing == null) {
-                output.appendText("Object not found for delete\n");
+            if (selectedClothes == null) {
+                output.appendText("Search object first!\n");
                 return;
             }
 
-            store.delete(existing);
+            boolean result = store.delete(selectedClothes);
 
-            output.appendText("Deleted successfully\n");
-        });        
+            if (result) {
+                output.appendText("Deleted!\n");
+                selectedClothes = null;
+
+                // очистити поля
+                nameField.clear();
+                priceField.clear();
+                sizeField.clear();
+            } else {
+                output.appendText("Delete failed!\n");
+            }
+        });
+
+        // ПОШУК
+        searchBtn.setOnAction(e -> {
+
+            Clothes result = store.searchByUuid(uuidField.getText());
+
+            if (result != null) {
+
+                selectedClothes = result;
+
+                nameField.setText(result.getName());
+                priceField.setText(String.valueOf(result.getPrice()));
+                sizeField.setText(result.getSize());
+                typeBox.setValue(result.getType().name());
+
+                output.appendText("Find: " + result + "\n");
+            } else {
+                output.appendText("Not found\n");
+            }
+        });       
 
         VBox root = new VBox(
                 new Label("Name"), nameField,
@@ -157,6 +207,8 @@ public class MainApp extends Application {
                 new Label("Sole Type (SHOES)"), soleTypeField,
 
                 addBtn,
+                updateBtn,
+                deleteBtn,
 
                 new Label("UUID Search"),
                 uuidField,

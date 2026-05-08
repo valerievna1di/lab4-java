@@ -24,9 +24,11 @@ public class Main {
             System.out.println("\n--- MENU ---");
             System.out.println("1. Create new object");
             System.out.println("2. Show all objects");
-            System.out.println("3. Search objects");
-            System.out.println("4. Show sorted objects");
-            System.out.println("5. Exit");
+            System.out.println("3. Update object");
+            System.out.println("4. Delete object");
+            System.out.println("5. Search objects");
+            System.out.println("6. Show sorted objects");
+            System.out.println("7. Exit");
             System.out.print("Choose option: ");
 
             int choice;
@@ -164,8 +166,99 @@ public class Main {
                 }
             }
 
-            // МЕНЮ ПОШУКУ
+            // ОНОВИТИ
             else if (choice == 3) {
+
+                System.out.print("Enter UUID of object to update: ");
+                String uuid = scanner.nextLine();
+
+                Clothes existing = store.searchByUuid(uuid);
+
+                if (existing == null) {
+                    System.out.println("Object not found!");
+                    continue;
+                }
+
+                System.out.println("\nWhat do you want to update?");
+                System.out.println("1. Name");
+                System.out.println("2. Type");
+                System.out.println("3. Price");
+                System.out.println("4. Size");
+                System.out.println("5. Cancel");
+
+                int updateChoice;
+
+                try {
+                    updateChoice = Integer.parseInt(scanner.nextLine());
+                } catch (Exception e) {
+                    System.out.println("Invalid input!");
+                    continue;
+                }
+
+                try {
+
+                    switch (updateChoice) {
+
+                        case 1 -> {
+                            System.out.print("New name: ");
+                            existing.setName(scanner.nextLine());
+                        }
+
+                        case 2 -> {
+                            System.out.print("New type: ");
+                            existing.setType(
+                                    ClothesType.valueOf(scanner.nextLine().toUpperCase())
+                            );
+                        }
+
+                        case 3 -> {
+                            System.out.print("New price: ");
+                            existing.setPrice(Double.parseDouble(scanner.nextLine()));
+                        }
+
+                        case 4 -> {
+                            System.out.print("New size: ");
+                            existing.setSize(scanner.nextLine());
+                        }
+
+                        case 5 -> {
+                            System.out.println("Cancelled");
+                            continue;
+                        }
+
+                        default -> {
+                            System.out.println("Invalid option!");
+                            continue;
+                        }
+                    }
+
+                    System.out.println("Object updated!");
+
+                } catch (Exception e) {
+                    System.out.println("Update error: " + e.getMessage());
+                }
+            }
+
+            // ВИДАЛИТИ
+            else if (choice == 4) {
+
+                System.out.print("Enter UUID of object to delete: ");
+                String uuid = scanner.nextLine();
+
+                Clothes existing = store.searchByUuid(uuid);
+
+                if (existing == null) {
+                    System.out.println("Object not found!");
+                    continue;
+                }
+
+                boolean result = store.delete(existing);
+
+                System.out.println(result ? "Object deleted!" : "Delete failed!");
+            }
+
+            // МЕНЮ ПОШУКУ
+            else if (choice == 5) {
 
                 System.out.println("\n--- SEARCH MENU ---");
                 System.out.println("1. By name");
@@ -245,7 +338,7 @@ public class Main {
             }            
             
             // СОРТУВАННЯ
-            else if (choice == 4) {
+            else if (choice == 6) {
 
                 if (store.getAll().isEmpty()) {
                     System.out.println("No objects to sort");
@@ -312,7 +405,7 @@ public class Main {
             }            
             
             // ВИХІД
-            else if (choice == 5) {
+            else if (choice == 7) {
 
                 FileService.saveToFile(store.getAll(), "input.txt");
 

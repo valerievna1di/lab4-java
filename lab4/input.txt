@@ -1,5 +1,4 @@
 PANTS;Joggers;WINTER;1400.0;M;fleece
-SHOES;Sneakers;SUMMER;1600.0;38;rubber
-SHIRTS;Polo shirt;SPRING;900.0;S;false
-JACKET;Light jacket;AUTUMN;1800.0;M;false
+SHOES;Sneakers;SUMMER;2000.0;38;rubber
+JACKET;Light jacket;AUTUMN;1500.0;L;false
 PANTS;Jeans;SUMMER;1600.0;S;denim

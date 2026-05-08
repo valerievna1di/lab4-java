@@ -95,7 +95,10 @@ public class Store {
 
         for (int i = 0; i < clothesList.size(); i++) {
 
-            if (clothesList.get(i).equals(existing)) {
+            if (clothesList.get(i).getUuid().equals(existing.getUuid())) {
+
+                updated.setUuid(clothesList.get(i).getUuid());
+
                 clothesList.set(i, updated);
                 return true;
             }

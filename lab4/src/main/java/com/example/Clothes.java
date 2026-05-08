@@ -54,6 +54,11 @@ public abstract class Clothes implements Comparable<Clothes>, Identifiable {
     
     public String getSize() { return size; }
     public void setSize(String size) { this.size = size; }
+    
+    public UUID getUuid() { return uuid; } 
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }    
 
     @Override
     public String toString() {
@@ -75,10 +80,5 @@ public abstract class Clothes implements Comparable<Clothes>, Identifiable {
     @Override
     public int compareTo(Clothes other) {
         return this.name.compareToIgnoreCase(other.name);
-    }
-    
-    @Override
-    public UUID getUuid() {
-        return uuid;
-    }    
+    }  
 }
