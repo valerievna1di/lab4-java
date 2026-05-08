@@ -78,7 +78,7 @@ public class Main {
                     System.out.print("Size: ");
                     String size = scanner.nextLine();
 
-                    else if (objectChoice == 1) {
+                    if (objectChoice == 1) {
 
                         System.out.print("Material: ");
                         String material = scanner.nextLine();
