@@ -2,6 +2,8 @@ package com.example;
 
 import java.util.ArrayList;
 import java.util.UUID;
+import com.example.exceptions.InvalidFieldValueException;
+import com.example.exceptions.ObjectNotFoundException;
 
 public class Store {
 
@@ -104,11 +106,13 @@ public class Store {
             }
         }
 
-        return false;
+        throw new ObjectNotFoundException("Object not found for update!");
     }
 
     public boolean delete(Clothes existing) {
 
-        return clothesList.removeIf(c -> c.equals(existing));
+        return clothesList.removeIf(
+            c -> c.getUuid().equals(existing.getUuid())
+        );
     }
 }
