@@ -278,14 +278,9 @@ public class Main {
                     
                     else if (sortChoice == 3) {
 
-                        Collections.sort(sortedList, new java.util.Comparator<Clothes>() {
-
-                            @Override
-                            public int compare(Clothes o1, Clothes o2) {
-
-                                return getSizeValue(o1.getSize()) - getSizeValue(o2.getSize());
-                            }
-                        });
+                        Collections.sort(sortedList,
+                                (o1, o2) ->
+                                        getSizeValue(o1.getSize()) - getSizeValue(o2.getSize()));
                     }
 
                     else {
