@@ -238,17 +238,29 @@ public class Main {
 
                 else {
 
+                    System.out.println("\n--- SORT MENU ---");
+                    System.out.println("1. Sort by name");
+                    System.out.println("2. Sort by price");
+                    System.out.println("3. Sort by size");
+                    System.out.println("0. Back");
+
+                    int sortChoice;
+
+                    try {
+                        sortChoice = Integer.parseInt(scanner.nextLine());
+                    }
+
+                    catch (Exception e) {
+                        System.out.println("Invalid input!");
+                        continue;
+                    }
+
+                    if (sortChoice == 0) {
+                        continue;
+                    }
+
                     ArrayList<Clothes> sortedList =
                             new ArrayList<>(store.getAll());
-
-                    Collections.sort(sortedList);
-
-                    System.out.println("\n--- SORTED OBJECTS ---");
-
-                    for (Clothes c : sortedList) {
-                        System.out.println(c);
-                    }
-                }
             }            
             
             // ВИХІД

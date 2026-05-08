@@ -3,3 +3,4 @@ SHOES;Sneakers;SUMMER;1600.0;38;rubber
 SHIRTS;Polo shirt;SPRING;900.0;S;false
 JACKET;Light jacket;AUTUMN;1800.0;M;false
 PANTS;Jeans;SUMMER;1600.0;S;denim
+JACKET;Winter Jacket;WINTER;2500.0;XL;true
