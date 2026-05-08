@@ -2,8 +2,8 @@ package com.example;
 
 import java.util.ArrayList;
 import java.util.UUID;
-import com.example.exceptions.InvalidFieldValueException;
-import com.example.exceptions.ObjectNotFoundException;
+import com.example.InvalidFieldValueException;
+import com.example.ObjectNotFoundException;
 
 public class Store {
 

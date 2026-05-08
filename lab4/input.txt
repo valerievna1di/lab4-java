@@ -1,2 +1,1 @@
 SHOES;Sneakers;SUMMER;2000.0;40;rubber
-JACKET;Light jacket;SPRING;1500.0;L;false

@@ -1,7 +1,7 @@
 package com.example;
 
 import java.util.UUID;
-import com.example.exceptions.InvalidFieldValueException;
+import com.example.InvalidFieldValueException;
 
 public abstract class Clothes implements Comparable<Clothes>, Identifiable {
 
@@ -40,7 +40,12 @@ public abstract class Clothes implements Comparable<Clothes>, Identifiable {
     }
 
     public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public void setName(String name) { 
+        if (name == null || name.isBlank()) {
+            throw new InvalidFieldValueException("Name cannot be empty!");
+        }
+        this.name = name; 
+    }
 
     public ClothesType getType() { return type; }
     public void setType(ClothesType type) { this.type = type; }
@@ -48,13 +53,18 @@ public abstract class Clothes implements Comparable<Clothes>, Identifiable {
     public double getPrice() { return price; }
     public void setPrice(double price) {
         if (price <= 0) {
-            throw new IllegalArgumentException("Invalid price! Price must be positive");
+            throw new InvalidFieldValueException("Invalid price! Price must be positive");
         }
         this.price = price;
     }
     
     public String getSize() { return size; }
-    public void setSize(String size) { this.size = size; }
+    public void setSize(String size) { 
+        if (size == null || size.isBlank()) {
+            throw new InvalidFieldValueException("ISize cannot be empty!");
+        }
+        this.size = size;
+    }
     
     public UUID getUuid() { return uuid; } 
     public void setUuid(UUID uuid) {

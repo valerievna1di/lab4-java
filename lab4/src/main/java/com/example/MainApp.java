@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import com.example.ObjectNotFoundException;
 
 public class MainApp extends Application {
 
@@ -135,17 +136,17 @@ public class MainApp extends Application {
                     }
                 }
 
-                boolean result = store.update(selectedClothes, updated);
+                store.update(selectedClothes, updated);
+                
+                output.appendText("Updated successfully!\n");
 
-                if (result) {
-                    selectedClothes = updated;
-                    output.appendText("Updated successfully!\n");
-                } else {
-                    output.appendText("Update failed!\n");
-                }
+                selectedClothes = updated;
+                    
+            } catch (ObjectNotFoundException ex) {
+                    output.appendText("Not found: " + ex.getMessage() + "\n");
 
-            } catch (Exception ex) {
-                output.appendText("Update error!\n");
+            } catch (IllegalArgumentException ex) {
+                output.appendText("Invalid input: " + ex.getMessage() + "\n");
             }
         });
 
@@ -156,10 +157,9 @@ public class MainApp extends Application {
                 output.appendText("Search object first!\n");
                 return;
             }
-
-            boolean result = store.delete(selectedClothes);
-
-            if (result) {
+            
+            try {
+                store.delete(selectedClothes);
                 output.appendText("Deleted!\n");
                 selectedClothes = null;
 
@@ -167,8 +167,8 @@ public class MainApp extends Application {
                 nameField.clear();
                 priceField.clear();
                 sizeField.clear();
-            } else {
-                output.appendText("Delete failed!\n");
+            } catch (ObjectNotFoundException ex) {
+                output.appendText("Not found: " + ex.getMessage() + "\n");
             }
         });
 

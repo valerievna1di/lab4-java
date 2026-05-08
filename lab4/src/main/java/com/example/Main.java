@@ -3,6 +3,8 @@ package com.example;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
+import com.example.ObjectNotFoundException;
+import com.example.InvalidFieldValueException;
 
 public class Main {
 
@@ -142,8 +144,11 @@ public class Main {
                         System.out.println("Invalid object type!");
                     }
 
-                } catch (IllegalArgumentException e) {
-                    System.out.println("Error: " + e.getMessage());
+                } catch (InvalidFieldValueException e) {
+                    System.out.println("Validation error: " + e.getMessage());
+                }
+                catch (IllegalArgumentException e) {
+                    System.out.println("Invalid enum value!");
                 }
 
                 catch (Exception e) {
@@ -252,9 +257,12 @@ public class Main {
                     continue;
                 }
 
-                boolean result = store.delete(existing);
-
-                System.out.println(result ? "Object deleted!" : "Delete failed!");
+                try {
+                    store.delete(existing);
+                    System.out.println("Object deleted!");
+                } catch (ObjectNotFoundException e) {
+                    System.out.println(e.getMessage());
+                }
             }
 
             // МЕНЮ ПОШУКУ
