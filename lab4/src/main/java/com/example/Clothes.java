@@ -26,7 +26,11 @@ public class Clothes {
         this.size = size;
 
     }
-    
+
+    public Clothes(String name, String type, int price, String size) {
+        this(name, ClothesType.valueOf(type), (double) price, size);
+    }
+
     public Clothes(Clothes other) {
         this.name = other.name;
         this.type = other.type;
@@ -34,22 +38,40 @@ public class Clothes {
         this.size = other.size;
     }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getName() {
+        return name;
+    }
 
-    public ClothesType getType() { return type; }
-    public void setType(ClothesType type) { this.type = type; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public double getPrice() { return price; }
+    public ClothesType getType() {
+        return type;
+    }
+
+    public void setType(ClothesType type) {
+        this.type = type;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
     public void setPrice(double price) {
         if (price <= 0) {
             throw new IllegalArgumentException("Invalid price! Price must be positive");
         }
         this.price = price;
     }
-    
-    public String getSize() { return size; }
-    public void setSize(String size) { this.size = size; }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
 
     @Override
     public String toString() {
@@ -58,8 +80,10 @@ public class Clothes {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof Clothes)) return false;
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Clothes))
+            return false;
 
         Clothes c = (Clothes) obj;
 
