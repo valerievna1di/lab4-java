@@ -58,7 +58,7 @@ public abstract class Clothes implements Comparable<Clothes>, Identifiable {
     public UUID getUuid() { return uuid; } 
     public void setUuid(UUID uuid) {
         this.uuid = uuid;
-    }    
+    } 
 
     @Override
     public String toString() {
