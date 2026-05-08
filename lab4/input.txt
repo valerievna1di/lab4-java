@@ -1,3 +1,2 @@
-PANTS;Joggers;WINTER;1400.0;M;fleece
-SHOES;Sneakers;SUMMER;2000.0;38;rubber
+SHOES;Sneakers;SUMMER;2000.0;40;rubber
 JACKET;Light jacket;SPRING;1500.0;L;false
