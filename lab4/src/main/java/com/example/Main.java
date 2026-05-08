@@ -259,8 +259,21 @@ public class Main {
                         continue;
                     }
 
-                    ArrayList<Clothes> sortedList =
-                            new ArrayList<>(store.getAll());
+                    ArrayList<Clothes> sortedList = new ArrayList<>(store.getAll());
+                    
+                    if (sortChoice == 1) {
+
+                        Collections.sort(sortedList,
+                                new java.util.Comparator<Clothes>() {
+
+                            @Override
+                            public int compare(Clothes o1, Clothes o2) {
+
+                                return o1.getName().
+                                        compareToIgnoreCase(o2.getName());
+                            }
+                        });
+}                    
             }            
             
             // ВИХІД
