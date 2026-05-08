@@ -1,6 +1,6 @@
 package com.example;
 
-public class Clothes {
+public abstract class Clothes implements Comparable<Clothes> {
 
     protected String name;
     protected ClothesType type;
@@ -66,5 +66,10 @@ public class Clothes {
         return name.equals(c.name)
                 && type.equals(c.type)
                 && price == c.price;
+    }
+    
+    @Override
+    public int compareTo(Clothes other) {
+        return this.name.compareToIgnoreCase(other.name);
     }
 }
