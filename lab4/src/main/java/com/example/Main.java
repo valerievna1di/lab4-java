@@ -293,8 +293,7 @@ public class Main {
                             @Override
                             public int compare(Clothes o1, Clothes o2) {
 
-                                return o1.getSize().
-                                        compareToIgnoreCase(o2.getSize());
+                                return getSizeValue(o1.getSize()) - getSizeValue(o2.getSize());
                             }
                         });
                     }
@@ -330,4 +329,34 @@ public class Main {
         scanner.close();
     }
     
+    static int getSizeValue(String size) {
+
+        if (size.equalsIgnoreCase("XS")) {
+            return 1;
+        }
+
+        else if (size.equalsIgnoreCase("S")) {
+            return 2;
+        }
+
+        else if (size.equalsIgnoreCase("M")) {
+            return 3;
+        }
+
+        else if (size.equalsIgnoreCase("L")) {
+            return 4;
+        }
+
+        else if (size.equalsIgnoreCase("XL")) {
+            return 5;
+        }
+
+        try {
+            return Integer.parseInt(size);
+        }
+
+        catch (Exception e) {
+            return 0;
+        }
+    }       
 }
