@@ -23,13 +23,6 @@ public class FileService {
 
                 switch (type) {
 
-                    case "CLOTHES":
-                        list.add(new Clothes(parts[1],
-                                ClothesType.valueOf(parts[2]),
-                                Double.parseDouble(parts[3]),
-                                parts[4]));
-                        break;
-
                     case "PANTS":
                         if (parts.length < 6) continue;
                     
@@ -99,10 +92,6 @@ public class FileService {
 
                 else if (c instanceof Shoes sh) {
                     writer.write("SHOES;" + sh.getName() + ";" + sh.getType() + ";" + sh.getPrice() + ";" + sh.getSize() + ";" + sh.getSoleType() + "\n");
-                }
-
-                else {
-                    writer.write("CLOTHES;" + c.getName() + ";" + c.getType() + ";" + c.getPrice() + ";" + c.getSize() + "\n");
                 }
             }
 

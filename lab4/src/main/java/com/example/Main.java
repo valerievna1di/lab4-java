@@ -43,11 +43,10 @@ public class Main {
             if (choice == 1) {
 
                 System.out.println("\nChoose object type:");
-                System.out.println("1. Clothes");
-                System.out.println("2. Pants");
-                System.out.println("3. Shirts");
-                System.out.println("4. Jacket");
-                System.out.println("5. Shoes");
+                System.out.println("1. Pants");
+                System.out.println("2. Shirts");
+                System.out.println("3. Jacket");
+                System.out.println("4. Shoes");
                 System.out.println("0. Back");
 
                 int objectChoice;
@@ -79,17 +78,7 @@ public class Main {
                     System.out.print("Size: ");
                     String size = scanner.nextLine();
 
-                    if (objectChoice == 1) {
-
-                        Clothes c =
-                                new Clothes(name, type, price, size);
-
-                        store.addNewClothes(c, 1);
-
-                        System.out.println("Clothes created!");
-                    }
-
-                    else if (objectChoice == 2) {
+                    else if (objectChoice == 1) {
 
                         System.out.print("Material: ");
                         String material = scanner.nextLine();
@@ -103,7 +92,7 @@ public class Main {
                         System.out.println("Pants created!");
                     }
 
-                    else if (objectChoice == 3) {
+                    else if (objectChoice == 2) {
 
                         System.out.print("Long sleeve (true/false): ");
                         boolean longSleeve =
@@ -118,7 +107,7 @@ public class Main {
                         System.out.println("Shirt created!");
                     }
 
-                    else if (objectChoice == 4) {
+                    else if (objectChoice == 3) {
 
                         System.out.print("Has hood (true/false): ");
                         boolean hood =
@@ -133,7 +122,7 @@ public class Main {
                         System.out.println("Jacket created!");
                     }
 
-                    else if (objectChoice == 5) {
+                    else if (objectChoice == 4) {
 
                         System.out.print("Sole type: ");
                         String soleType = scanner.nextLine();
