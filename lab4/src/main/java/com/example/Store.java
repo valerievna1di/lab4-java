@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Store {
 
@@ -77,7 +78,7 @@ public class Store {
         try {
             UUID uuid = UUID.fromString(uuidStr);
 
-            for (Clothes c : list) {
+            for (Clothes c : clothesList) {
                 if (c.getUuid().equals(uuid)) {
                     return c;
                 }
