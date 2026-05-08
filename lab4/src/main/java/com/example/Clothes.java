@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.UUID;
+import com.example.exceptions.InvalidFieldValueException;
 
 public abstract class Clothes implements Comparable<Clothes>, Identifiable {
 
@@ -12,15 +13,15 @@ public abstract class Clothes implements Comparable<Clothes>, Identifiable {
 
     public Clothes(String name, ClothesType type, double price, String size) {
         if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException("Name cannot be empty");
+            throw new InvalidFieldValueException("Name cannot be empty");
         }
 
         if (price <= 0) {
-            throw new IllegalArgumentException("Price must be positive");
+            throw new InvalidFieldValueException("Price must be positive");
         }
 
         if (size == null || size.isEmpty()) {
-            throw new IllegalArgumentException("Size cannot be empty");
+            throw new InvalidFieldValueException("Size cannot be empty");
         }
 
         this.name = name;
