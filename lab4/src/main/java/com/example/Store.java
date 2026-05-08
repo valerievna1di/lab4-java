@@ -90,4 +90,22 @@ public class Store {
 
         return null;
     }
-}    
+    
+    public boolean update(Clothes existing, Clothes updated) {
+
+        for (int i = 0; i < clothesList.size(); i++) {
+
+            if (clothesList.get(i).equals(existing)) {
+                clothesList.set(i, updated);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean delete(Clothes existing) {
+
+        return clothesList.removeIf(c -> c.equals(existing));
+    }
+}
