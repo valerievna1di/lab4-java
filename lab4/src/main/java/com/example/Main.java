@@ -271,14 +271,9 @@ public class Main {
 
                     else if (sortChoice == 2) {
 
-                        Collections.sort(sortedList, new java.util.Comparator<Clothes>() {
-
-                            @Override
-                            public int compare(Clothes o1, Clothes o2) {
-
-                                return Double.compare( o1.getPrice(), o2.getPrice());
-                            }
-                        });
+                        Collections.sort(sortedList,
+                                (o1, o2) ->
+                                        Double.compare( o1.getPrice(), o2.getPrice()));
                     }
                     
                     else if (sortChoice == 3) {
