@@ -171,6 +171,7 @@ public class Main {
                 System.out.println("1. By name");
                 System.out.println("2. By type");
                 System.out.println("3. By price range");
+                System.out.println("4. By UUID");
                 System.out.println("0. Back");
 
                 int searchChoice;
@@ -214,6 +215,20 @@ public class Main {
                         double max = Double.parseDouble(scanner.nextLine());
 
                         store.searchByPrice(min, max);
+                    }
+
+                    else if (searchChoice == 4) {
+
+                        System.out.print("Enter UUID: ");
+                        String uuid = scanner.nextLine();
+
+                        Clothes result = store.searchByUuid(uuid);
+
+                        if (result != null) {
+                            System.out.println(result);
+                        } else {
+                            System.out.println("Not found");
+                        }
                     }
 
                     else {

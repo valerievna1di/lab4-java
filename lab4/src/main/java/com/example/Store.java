@@ -71,4 +71,22 @@ public class Store {
 
         if (!found) System.out.println("Nothing found");
     }
+    
+    public Clothes searchByUuid(String uuidStr) {
+
+        try {
+            UUID uuid = UUID.fromString(uuidStr);
+
+            for (Clothes c : list) {
+                if (c.getUuid().equals(uuid)) {
+                    return c;
+                }
+            }
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid UUID format!");
+        }
+
+        return null;
+    }
 }    
