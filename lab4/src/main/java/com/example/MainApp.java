@@ -31,6 +31,8 @@ public class MainApp extends Application {
 
         Button addBtn = new Button("Add");
         Button searchBtn = new Button("Search UUID");
+        Button updateBtn = new Button("Update");
+        Button deleteBtn = new Button("Delete");
 
         TextArea output = new TextArea();
 
@@ -106,6 +108,39 @@ public class MainApp extends Application {
                 output.appendText("Not found\n");
             }
         });
+        
+        // ОНОВЛЕННЯ
+        updateBtn.setOnAction(e -> {
+
+            Clothes existing = store.searchByUuid(uuidField.getText());
+
+            if (existing == null) {
+                output.appendText("Object not found for update\n");
+                return;
+            }
+
+            // створюємо новий об'єкт з новими даними
+            Clothes updated = existing; // (або новий об'єкт якщо треба змінювати поля)
+
+            store.update(existing, updated);
+
+            output.appendText("Updated successfully\n");
+        });
+
+        // ВИДАЛЕННЯ
+        deleteBtn.setOnAction(e -> {
+
+            Clothes existing = store.searchByUuid(uuidField.getText());
+
+            if (existing == null) {
+                output.appendText("Object not found for delete\n");
+                return;
+            }
+
+            store.delete(existing);
+
+            output.appendText("Deleted successfully\n");
+        });        
 
         VBox root = new VBox(
                 new Label("Name"), nameField,
