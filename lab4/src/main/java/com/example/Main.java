@@ -238,17 +238,72 @@ public class Main {
 
                 else {
 
-                    ArrayList<Clothes> sortedList =
-                            new ArrayList<>(store.getAll());
+                    System.out.println("\n--- SORT MENU ---");
+                    System.out.println("1. Sort by name");
+                    System.out.println("2. Sort by price");
+                    System.out.println("3. Sort by size");
+                    System.out.println("0. Back");
 
-                    Collections.sort(sortedList);
+                    int sortChoice;
+
+                    try {
+                        sortChoice = Integer.parseInt(scanner.nextLine());
+                    }
+
+                    catch (Exception e) {
+                        System.out.println("Invalid input!");
+                        continue;
+                    }
+
+                    if (sortChoice == 0) {
+                        continue;
+                    }
+
+                    ArrayList<Clothes> sortedList = new ArrayList<>(store.getAll());
+                    
+                    if (sortChoice == 1) {
+
+                        Collections.sort(sortedList,
+                                (o1, o2) ->
+                                        o1.getName()
+                                        .compareToIgnoreCase(o2.getName()));
+                    }
+
+                    else if (sortChoice == 2) {
+
+                        Collections.sort(sortedList, new java.util.Comparator<Clothes>() {
+
+                            @Override
+                            public int compare(Clothes o1, Clothes o2) {
+
+                                return Double.compare( o1.getPrice(), o2.getPrice());
+                            }
+                        });
+                    }
+                    
+                    else if (sortChoice == 3) {
+
+                        Collections.sort(sortedList, new java.util.Comparator<Clothes>() {
+
+                            @Override
+                            public int compare(Clothes o1, Clothes o2) {
+
+                                return getSizeValue(o1.getSize()) - getSizeValue(o2.getSize());
+                            }
+                        });
+                    }
+
+                    else {
+                        System.out.println("Invalid option!");
+                        continue;
+                    }
 
                     System.out.println("\n--- SORTED OBJECTS ---");
 
                     for (Clothes c : sortedList) {
                         System.out.println(c);
-                    }
-                }
+                    }                    
+                }    
             }            
             
             // ВИХІД
@@ -269,4 +324,34 @@ public class Main {
         scanner.close();
     }
     
+    static int getSizeValue(String size) {
+
+        if (size.equalsIgnoreCase("XS")) {
+            return 1;
+        }
+
+        else if (size.equalsIgnoreCase("S")) {
+            return 2;
+        }
+
+        else if (size.equalsIgnoreCase("M")) {
+            return 3;
+        }
+
+        else if (size.equalsIgnoreCase("L")) {
+            return 4;
+        }
+
+        else if (size.equalsIgnoreCase("XL")) {
+            return 5;
+        }
+
+        try {
+            return Integer.parseInt(size);
+        }
+
+        catch (Exception e) {
+            return 0;
+        }
+    }       
 }
