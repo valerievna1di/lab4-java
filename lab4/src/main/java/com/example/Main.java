@@ -273,7 +273,21 @@ public class Main {
                                         compareToIgnoreCase(o2.getName());
                             }
                         });
-}                    
+                    }
+
+                    else if (sortChoice == 2) {
+
+                        Collections.sort(sortedList,
+                                new java.util.Comparator<Clothes>() {
+
+                            @Override
+                            public int compare(Clothes o1, Clothes o2) {
+
+                                return Double.compare( o1.getPrice(), o2.getPrice());
+                            }
+                        });
+                    }
+                    
             }            
             
             // ВИХІД
