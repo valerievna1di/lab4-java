@@ -14,12 +14,11 @@ public class Main {
             return;
         }
 
-        DatabaseManager db = new DatabaseManager(args[0]);        
+        DatabaseManager db = new DatabaseManager(args[0]);
 
         Store store = new Store();
 
-        ArrayList<Clothes> temp =
-                FileService.loadFromFile("input.txt");
+        ArrayList<Clothes> temp = FileService.loadFromFile("input.txt");
 
         for (Clothes c : temp) {
             store.addNewClothes(c, 1);
@@ -74,20 +73,17 @@ public class Main {
                     String name = scanner.nextLine();
 
                     System.out.print("Type (SUMMER/WINTER/AUTUMN/SPRING): ");
-                    ClothesType type =
-                            ClothesType.valueOf(scanner.nextLine().toUpperCase());
+                    ClothesType type = ClothesType.valueOf(scanner.nextLine().toUpperCase());
 
                     System.out.print("Price: ");
-                    double price =
-                            Double.parseDouble(scanner.nextLine());
+                    double price = Double.parseDouble(scanner.nextLine());
 
                     System.out.print("Size: ");
                     String size = scanner.nextLine();
 
                     if (objectChoice == 1) {
 
-                        Clothes c =
-                                new Clothes(name, type, price, size);
+                        Clothes c = new Clothes(name, type, price, size);
 
                         store.addNewClothes(c, 1);
 
@@ -101,9 +97,8 @@ public class Main {
                         System.out.print("Material: ");
                         String material = scanner.nextLine();
 
-                        Pants pants =
-                                new Pants(name, type,
-                                        price, size, material);
+                        Pants pants = new Pants(name, type,
+                                price, size, material);
 
                         store.addNewClothes(pants, 1);
 
@@ -115,12 +110,10 @@ public class Main {
                     else if (objectChoice == 3) {
 
                         System.out.print("Long sleeve (true/false): ");
-                        boolean longSleeve =
-                                Boolean.parseBoolean(scanner.nextLine());
+                        boolean longSleeve = Boolean.parseBoolean(scanner.nextLine());
 
-                        Shirts shirt =
-                                new Shirts(name, type,
-                                        price, size, longSleeve);
+                        Shirts shirt = new Shirts(name, type,
+                                price, size, longSleeve);
 
                         store.addNewClothes(shirt, 1);
 
@@ -132,12 +125,10 @@ public class Main {
                     else if (objectChoice == 4) {
 
                         System.out.print("Has hood (true/false): ");
-                        boolean hood =
-                                Boolean.parseBoolean(scanner.nextLine());
+                        boolean hood = Boolean.parseBoolean(scanner.nextLine());
 
-                        Jacket jacket =
-                                new Jacket(name, type,
-                                        price, size, hood);
+                        Jacket jacket = new Jacket(name, type,
+                                price, size, hood);
 
                         store.addNewClothes(jacket, 1);
 
@@ -151,9 +142,8 @@ public class Main {
                         System.out.print("Sole type: ");
                         String soleType = scanner.nextLine();
 
-                        Shoes shoes =
-                                new Shoes(name, type,
-                                        price, size, soleType);
+                        Shoes shoes = new Shoes(name, type,
+                                price, size, soleType);
 
                         store.addNewClothes(shoes, 1);
 
@@ -172,6 +162,7 @@ public class Main {
 
                 catch (Exception e) {
                     System.out.println("Unexpected error!");
+                    e.printStackTrace();
                 }
             }
 
@@ -225,8 +216,7 @@ public class Main {
                     else if (searchChoice == 2) {
 
                         System.out.print("Enter type (SUMMER/WINTER/AUTUMN/SPRING): ");
-                        ClothesType type =
-                                ClothesType.valueOf(scanner.nextLine().toUpperCase());
+                        ClothesType type = ClothesType.valueOf(scanner.nextLine().toUpperCase());
 
                         store.searchByType(type);
                     }
@@ -253,8 +243,8 @@ public class Main {
                 catch (Exception e) {
                     System.out.println("Unexpected error!");
                 }
-            }            
-            
+            }
+
             // ВИХІД
             else if (choice == 4) {
 
@@ -272,5 +262,5 @@ public class Main {
 
         scanner.close();
     }
-    
+
 }

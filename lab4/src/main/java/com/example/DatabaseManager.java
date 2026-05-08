@@ -11,25 +11,22 @@ public class DatabaseManager {
 
     private Connection connection;
 
-    public DatabaseManager(String propertiesPath) {
+    public DatabaseManager(String configPath) {
 
-        try {
+        try (FileInputStream fis = new FileInputStream(configPath)) {
 
-            Properties props = new Properties();
-            props.load(new FileInputStream(propertiesPath));
+                Properties props = new Properties();
+                props.load(fis);
 
-            String url = props.getProperty("db.url");
-            String user = props.getProperty("db.user");
-            String password = props.getProperty("db.password");
+                String url = props.getProperty("db.url");
+                String user = props.getProperty("db.user");
+                String password = props.getProperty("db.password");
 
-            connection =
-                    DriverManager.getConnection(url, user, password);
-
-            System.out.println("Database connected");
+                connection = DriverManager.getConnection(url, user, password);
 
         } catch (Exception e) {
-            System.out.println("Database connection error: "
-                    + e.getMessage());
+                System.out.println("DB connection failed!");
+                e.printStackTrace();
         }
     }
 
